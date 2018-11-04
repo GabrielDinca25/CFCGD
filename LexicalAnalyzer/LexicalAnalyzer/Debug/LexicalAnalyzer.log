@@ -1,3 +1,3 @@
 ﻿  Process "sample.l" flex file
   sample.flex.cpp
-  LexicalAnalyzer.vcxproj -> C:\Users\Gabi\source\repos\LexicalAnalyzer\Debug\LexicalAnalyzer.exe
+c:\users\gabi\source\repos\lexicalanalyzer\lexicalanalyzer\sample.l(108): error C2065: 'yylloc': undeclared identifier

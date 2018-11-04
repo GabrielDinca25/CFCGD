@@ -1,0 +1,43 @@
+Skipping preprocessor: #include <stdio.h>
+Found keyword: void
+Found an identifier: main
+Found (
+Found )
+Found {
+Skipping single line comment
+Skipping multiple line comment
+Found keyword: int
+Found an identifier: n
+Found =
+Found an int: 3 (3)
+Found ;
+Found keyword: int
+Found an identifier: m
+Found =
+Found an int: 4 (4)
+Found ;
+Found an identifier: printf
+Found (
+Found a string: "Da"
+Found )
+Found ;
+Found keyword: if
+Found (
+Found an identifier: m
+Found >
+Found an identifier: n
+Found )
+Found {
+Found an identifier: n
+Found =
+Found an identifier: m
+Found ;
+Found }
+Found keyword: else
+Found {
+Found an identifier: m
+Found =
+Found an identifier: n
+Found ;
+Found }
+Found }

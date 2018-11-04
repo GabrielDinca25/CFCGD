@@ -17,10 +17,26 @@ ID       [a-zA-Z][a-zA-Z0-9]*
 
 %{
 #include <stdio.h>
+#include <cstdio> 
 %}
 
 %%
 [ \t\n]         ;
+^"#".*					{printf("Skipping preprocessor: %s\n", yytext);}
+
+{DIGIT}+				{printf( "Found an int: %s (%d)\n", yytext, atoi( yytext ) );}
+{DIGIT}+"."{DIGIT}*		{printf( "Found a float: %s (%g)\n", yytext,atof( yytext ) );}
+
+{ID}					{printf( "Found an identifier: %s %s\n", yytext );}
+
+{DIGIT}+{ID}*			{printf( "Invalid Syntax: %s\n", yytext);}
+
+'([^\r^\n^']|\\0)'		{printf( "Found a char: %s\n", yytext );};
+\"[^\"]*\"				{printf( "Found a string: %s\n", yytext );}
+
+
+"/*"((("*"[^/])?)|[^*])*"*/" {printf( "Skipping multiple line comment\n");}
+"//".*                       {printf( "Skipping single line comment\n");}
 
 "auto"			 { printf("Found keyword: %s\n", yytext );	}
 "break"			 { printf("Found keyword: %s\n", yytext );	}
@@ -60,6 +76,7 @@ ID       [a-zA-Z][a-zA-Z0-9]*
 ">>="		 { printf("Found %s\n", yytext );	}
 "<<="		 { printf("Found %s\n", yytext );	}
 "+="		 { printf("Found %s\n", yytext );	}
+"="			 { printf("Found %s\n", yytext );	}
 "-="		 { printf("Found %s\n", yytext );	}
 "*="		 { printf("Found %s\n", yytext );	}
 "/="		 { printf("Found %s\n", yytext );	}
@@ -101,19 +118,21 @@ ID       [a-zA-Z][a-zA-Z0-9]*
 ("["|"<:")	 { printf("Found %s\n", yytext );	}
 ("]"|":>")	 { printf("Found %s\n", yytext );	}
 
-{DIGIT}+				{printf( "Found an int: %s (%d)\n", yytext, atoi( yytext ) );}
-{DIGIT}+"."{DIGIT}*		{printf( "Found a float: %s (%g)\n", yytext,atof( yytext ) );}
-{ID}					{printf( "Found a string: %s\n", yytext );}
-{DIGIT}+{ID}*			{printf("Invalid Syntax\n");}
-
-.						{printf( "Unknown character \n");}
+.			 {printf( "Unknown character %s\n", yytext);}
 %%
 
-int main()
+int main(int argc, char** argv)
 { 
-  int m = 2;
-  int nm = 2;
-  m--;
+  ++argv, --argc;
+  FILE *stream;
+  if ( argc > 0 )
+  {
+    fopen_s(&stream, argv[0], "r" );
+	yyin = stream;
+  }
+  else
+    yyin = stdin;
+
   yylex();
   return 0;
 }

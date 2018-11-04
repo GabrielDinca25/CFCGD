@@ -24,6 +24,10 @@
   <ItemGroup>
     <ClCompile Include="sample.flex.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="input1.c.txt" />
+    <Text Include="input2.c.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{70EC4AC4-7C2D-4051-817C-7B67A759A62E}</ProjectGuid>
