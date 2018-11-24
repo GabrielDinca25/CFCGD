@@ -352,8 +352,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 90
-#define YY_END_OF_BUFFER 91
+#define YY_NUM_RULES 91
+#define YY_END_OF_BUFFER 92
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -363,31 +363,31 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[228] =
     {   0,
-        0,    0,    0,    0,   91,   89,    1,    1,   60,   89,
-       66,   59,   89,   72,   73,   64,   63,   62,   58,   65,
-       80,   89,   57,   67,   39,   68,   71,   82,   74,   75,
-       69,   82,   82,   82,   82,   82,   82,   82,   82,   82,
-       82,   82,   82,   82,   82,   82,   76,   70,   77,   61,
-       86,   90,   56,    0,   85,   77,   51,   43,    0,    0,
-       41,   48,   38,   49,   40,   50,    0,    0,   88,   42,
-       81,   80,   83,   79,   76,   78,   47,   53,   55,   54,
-       46,   82,   44,   82,   82,   82,   82,   82,   82,    9,
-       82,   82,   82,   82,   82,   82,   17,   82,   82,   82,
+        0,    0,    0,    0,   92,   90,    1,    2,   70,   90,
+       76,   69,   90,   82,   83,   74,   73,   72,   68,   75,
+        4,   90,   67,   77,   49,   78,   81,    6,   84,   85,
+       79,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,   86,   80,   87,   71,
+        3,   91,   66,    0,    9,   87,   61,   53,    0,    0,
+       51,   58,   48,   59,   50,   60,    0,    0,   11,   52,
+        5,    4,    7,   89,   86,   88,   57,   63,   65,   64,
+       56,    6,   54,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
 
-       82,   82,   82,   82,   82,   82,   82,   82,   45,   52,
-       86,   84,   35,    0,    0,   88,   81,   83,   83,   37,
-       36,   82,   82,   82,   82,   82,   82,   82,   82,   82,
-       82,   82,   15,   82,   18,   82,   82,   82,   82,   82,
-       82,   82,   82,   82,   82,   82,   82,   82,   82,   82,
-       87,    2,   82,    4,    5,   82,   82,   82,   82,   82,
-       11,   12,   82,   82,   16,   19,   82,   82,   82,   82,
-       82,   82,   82,   82,   82,   82,   82,   32,   82,   82,
-        3,    6,   82,   82,   82,   82,   82,   14,   82,   82,
-       22,   82,   82,   82,   82,   82,   82,   30,   82,   82,
+        6,    6,    6,    6,    6,    6,    6,    6,   55,   62,
+        3,    8,   45,    0,    0,   11,    5,    7,    7,   47,
+       46,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+       10,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
 
-       34,   82,   82,   29,   10,   13,   82,   21,   23,   24,
-       25,   26,   27,   82,   82,   82,   82,    8,   82,   28,
-       82,   82,    7,   20,   31,   33,    0
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -605,8 +605,10 @@ char *yytext;
 #line 19 "sample.l"
 #include <stdio.h>
 #include <cstdio> 
-#line 608 "sample.flex.cpp"
-#line 609 "sample.flex.cpp"
+int mylineno = 1;
+
+#line 610 "sample.flex.cpp"
+#line 611 "sample.flex.cpp"
 
 #define INITIAL 0
 #define COMENTARIU 1
@@ -824,9 +826,9 @@ YY_DECL
 		}
 
 	{
-#line 23 "sample.l"
+#line 25 "sample.l"
 
-#line 829 "sample.flex.cpp"
+#line 831 "sample.flex.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -885,459 +887,464 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
-/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 24 "sample.l"
+#line 26 "sample.l"
 ;
 	YY_BREAK
 case 2:
+/* rule 2 can match eol */
 YY_RULE_SETUP
-#line 26 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 27 "sample.l"
+{ mylineno++; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 27 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 28 "sample.l"
+{printf("Skipping preprocessor: %s\n", yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 28 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 30 "sample.l"
+{printf( "Found an int: %s (%d)\n", yytext, atoi( yytext ) );}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 29 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 31 "sample.l"
+{printf( "Found a float: %s (%g)\n", yytext,atof( yytext ) );}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 30 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 33 "sample.l"
+{printf( "Found an identifier: %s\n", yytext );}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 31 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 35 "sample.l"
+{printf( "Invalid Syntax: %s at line: %d\n", yytext, mylineno);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 32 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 37 "sample.l"
+{printf( "Found a char: %s\n", yytext );};
 	YY_BREAK
 case 9:
+/* rule 9 can match eol */
 YY_RULE_SETUP
-#line 33 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 38 "sample.l"
+{printf( "Found a string: %s\n", yytext );}
 	YY_BREAK
 case 10:
+/* rule 10 can match eol */
 YY_RULE_SETUP
-#line 34 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 41 "sample.l"
+{printf( "Skipping multiple line comment\n");}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 35 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
+#line 42 "sample.l"
+{printf( "Skipping single line comment\n");}
 	YY_BREAK
 case 12:
-YY_RULE_SETUP
-#line 36 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
-	YY_BREAK
-case 13:
-YY_RULE_SETUP
-#line 37 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
-	YY_BREAK
-case 14:
-YY_RULE_SETUP
-#line 38 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
-	YY_BREAK
-case 15:
-YY_RULE_SETUP
-#line 39 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
-	YY_BREAK
-case 16:
-YY_RULE_SETUP
-#line 40 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
-	YY_BREAK
-case 17:
-YY_RULE_SETUP
-#line 41 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
-	YY_BREAK
-case 18:
-YY_RULE_SETUP
-#line 42 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
-	YY_BREAK
-case 19:
-YY_RULE_SETUP
-#line 43 "sample.l"
-{ printf("Found keyword: %s\n", yytext );	}
-	YY_BREAK
-case 20:
 YY_RULE_SETUP
 #line 44 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 21:
+case 13:
 YY_RULE_SETUP
 #line 45 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 22:
+case 14:
 YY_RULE_SETUP
 #line 46 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 23:
+case 15:
 YY_RULE_SETUP
 #line 47 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 24:
+case 16:
 YY_RULE_SETUP
 #line 48 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 25:
+case 17:
 YY_RULE_SETUP
 #line 49 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 26:
+case 18:
 YY_RULE_SETUP
 #line 50 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 27:
+case 19:
 YY_RULE_SETUP
 #line 51 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 28:
+case 20:
 YY_RULE_SETUP
 #line 52 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 29:
+case 21:
 YY_RULE_SETUP
 #line 53 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 30:
+case 22:
 YY_RULE_SETUP
 #line 54 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 31:
+case 23:
 YY_RULE_SETUP
 #line 55 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 32:
+case 24:
 YY_RULE_SETUP
 #line 56 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 33:
+case 25:
 YY_RULE_SETUP
 #line 57 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 34:
+case 26:
 YY_RULE_SETUP
 #line 58 "sample.l"
 { printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
-case 35:
+case 27:
+YY_RULE_SETUP
+#line 59 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
+	YY_BREAK
+case 28:
 YY_RULE_SETUP
 #line 60 "sample.l"
-{ printf("Found %s\n", yytext );	}
+{ printf("Found keyword: %s\n", yytext );	}
+	YY_BREAK
+case 29:
+YY_RULE_SETUP
+#line 61 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
+	YY_BREAK
+case 30:
+YY_RULE_SETUP
+#line 62 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
+	YY_BREAK
+case 31:
+YY_RULE_SETUP
+#line 63 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
+	YY_BREAK
+case 32:
+YY_RULE_SETUP
+#line 64 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
+	YY_BREAK
+case 33:
+YY_RULE_SETUP
+#line 65 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
+	YY_BREAK
+case 34:
+YY_RULE_SETUP
+#line 66 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
+	YY_BREAK
+case 35:
+YY_RULE_SETUP
+#line 67 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 61 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 68 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 62 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 69 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 63 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 70 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 64 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 71 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 65 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 72 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 66 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 73 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 67 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 74 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 68 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 75 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 69 "sample.l"
-{ printf("Found %s\n", yytext );	}
+#line 76 "sample.l"
+{ printf("Found keyword: %s\n", yytext );	}
 	YY_BREAK
 case 45:
-YY_RULE_SETUP
-#line 70 "sample.l"
-{ printf("Found %s\n", yytext );	}
-	YY_BREAK
-case 46:
-YY_RULE_SETUP
-#line 71 "sample.l"
-{ printf("Found %s\n", yytext );	}
-	YY_BREAK
-case 47:
-YY_RULE_SETUP
-#line 72 "sample.l"
-{ printf("Found %s\n", yytext );	}
-	YY_BREAK
-case 48:
-YY_RULE_SETUP
-#line 73 "sample.l"
-{ printf("Found %s\n", yytext );	}
-	YY_BREAK
-case 49:
-YY_RULE_SETUP
-#line 74 "sample.l"
-{ printf("Found %s\n", yytext );	}
-	YY_BREAK
-case 50:
-YY_RULE_SETUP
-#line 75 "sample.l"
-{ printf("Found %s\n", yytext );	}
-	YY_BREAK
-case 51:
-YY_RULE_SETUP
-#line 76 "sample.l"
-{ printf("Found %s\n", yytext );	}
-	YY_BREAK
-case 52:
-YY_RULE_SETUP
-#line 77 "sample.l"
-{ printf("Found %s\n", yytext );	}
-	YY_BREAK
-case 53:
 YY_RULE_SETUP
 #line 78 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 54:
+case 46:
 YY_RULE_SETUP
 #line 79 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 55:
+case 47:
 YY_RULE_SETUP
 #line 80 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 56:
+case 48:
 YY_RULE_SETUP
 #line 81 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 57:
+case 49:
 YY_RULE_SETUP
 #line 82 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 58:
+case 50:
 YY_RULE_SETUP
 #line 83 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 59:
+case 51:
 YY_RULE_SETUP
 #line 84 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 60:
+case 52:
 YY_RULE_SETUP
 #line 85 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 61:
+case 53:
 YY_RULE_SETUP
 #line 86 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 62:
+case 54:
 YY_RULE_SETUP
 #line 87 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 63:
+case 55:
 YY_RULE_SETUP
 #line 88 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 64:
+case 56:
 YY_RULE_SETUP
 #line 89 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 65:
+case 57:
 YY_RULE_SETUP
 #line 90 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 66:
+case 58:
 YY_RULE_SETUP
 #line 91 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 67:
+case 59:
 YY_RULE_SETUP
 #line 92 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 68:
+case 60:
 YY_RULE_SETUP
 #line 93 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 69:
+case 61:
 YY_RULE_SETUP
 #line 94 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 70:
+case 62:
 YY_RULE_SETUP
 #line 95 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 71:
+case 63:
 YY_RULE_SETUP
 #line 96 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 72:
+case 64:
 YY_RULE_SETUP
 #line 97 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 73:
+case 65:
 YY_RULE_SETUP
 #line 98 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 74:
+case 66:
 YY_RULE_SETUP
 #line 99 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 75:
+case 67:
 YY_RULE_SETUP
 #line 100 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 76:
+case 68:
 YY_RULE_SETUP
 #line 101 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 77:
+case 69:
 YY_RULE_SETUP
 #line 102 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 78:
+case 70:
 YY_RULE_SETUP
 #line 103 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 79:
+case 71:
 YY_RULE_SETUP
 #line 104 "sample.l"
 { printf("Found %s\n", yytext );	}
 	YY_BREAK
-case 80:
+case 72:
+YY_RULE_SETUP
+#line 105 "sample.l"
+{ printf("Found %s\n", yytext );	}
+	YY_BREAK
+case 73:
 YY_RULE_SETUP
 #line 106 "sample.l"
-{printf( "Found an int: %s (%d)\n", yytext, atoi( yytext ) );}
+{ printf("Found %s\n", yytext );	}
+	YY_BREAK
+case 74:
+YY_RULE_SETUP
+#line 107 "sample.l"
+{ printf("Found %s\n", yytext );	}
+	YY_BREAK
+case 75:
+YY_RULE_SETUP
+#line 108 "sample.l"
+{ printf("Found %s\n", yytext );	}
+	YY_BREAK
+case 76:
+YY_RULE_SETUP
+#line 109 "sample.l"
+{ printf("Found %s\n", yytext );	}
+	YY_BREAK
+case 77:
+YY_RULE_SETUP
+#line 110 "sample.l"
+{ printf("Found %s\n", yytext );	}
+	YY_BREAK
+case 78:
+YY_RULE_SETUP
+#line 111 "sample.l"
+{ printf("Found %s\n", yytext );	}
+	YY_BREAK
+case 79:
+YY_RULE_SETUP
+#line 112 "sample.l"
+{ printf("Found %s\n", yytext );	}
+	YY_BREAK
+case 80:
+YY_RULE_SETUP
+#line 113 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 107 "sample.l"
-{printf( "Found a float: %s (%g)\n", yytext,atof( yytext ) );}
+#line 114 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 108 "sample.l"
-{printf( "Found an identifier: %s %s\n", yytext, yylloc );}
+#line 115 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 109 "sample.l"
-{printf("Invalid Syntax: %s\n", yytext);}
+#line 116 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 111 "sample.l"
-{printf( "Found a char: %s\n", yytext );};
+#line 117 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 85:
-/* rule 85 can match eol */
 YY_RULE_SETUP
-#line 112 "sample.l"
-{printf( "Found a string: %s\n", yytext );}
+#line 118 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 114 "sample.l"
-{printf("Skipping preprocessor: %s\n", yytext);}
+#line 119 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 87:
-/* rule 87 can match eol */
 YY_RULE_SETUP
-#line 116 "sample.l"
-{printf( "Skipping multiple line comment\n");}
+#line 120 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 117 "sample.l"
-{printf( "Skipping single line comment\n");}
+#line 121 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 119 "sample.l"
-{printf( "Unknown character %s\n", yytext);}
+#line 122 "sample.l"
+{ printf("Found %s\n", yytext );	}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 120 "sample.l"
+#line 124 "sample.l"
+{printf( "Unknown character %s\n", yytext);}
+	YY_BREAK
+case 91:
+YY_RULE_SETUP
+#line 125 "sample.l"
 ECHO;
 	YY_BREAK
-#line 1340 "sample.flex.cpp"
+#line 1347 "sample.flex.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMENTARIU):
 	yyterminate();
@@ -2346,7 +2353,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 120 "sample.l"
+#line 125 "sample.l"
 
 
 int main(int argc, char** argv)

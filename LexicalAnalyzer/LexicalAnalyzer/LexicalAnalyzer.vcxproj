@@ -23,10 +23,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sample.flex.cpp" />
+    <ClCompile Include="sample.tab.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input1.c.txt" />
     <Text Include="input2.c.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Bison Include="sample.y" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sample.tab.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

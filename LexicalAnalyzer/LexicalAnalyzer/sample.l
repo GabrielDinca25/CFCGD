@@ -18,107 +18,108 @@ ID       [a-zA-Z][a-zA-Z0-9]*
 %{
 #include <stdio.h>
 #include <cstdio> 
+int mylineno = 1;
+
 %}
 
 %%
-[ \t\n]         ;
-^"#".*					{printf("Skipping preprocessor: %s\n", yytext);}
+[ \t]         ;
+\n  { mylineno++; }
+^"#".*					{;}
 
-{DIGIT}+				{printf( "Found an int: %s (%d)\n", yytext, atoi( yytext ) );}
-{DIGIT}+"."{DIGIT}*		{printf( "Found a float: %s (%g)\n", yytext,atof( yytext ) );}
+{DIGIT}+				{return INT;}
+{DIGIT}+"."{DIGIT}*		{return FLOAT;}
 
-{ID}					{printf( "Found an identifier: %s %s\n", yytext );}
+{ID}					{return ID;}
 
-{DIGIT}+{ID}*			{printf( "Invalid Syntax: %s\n", yytext);}
+{DIGIT}+{ID}*			{return INVALID_SYNTAX;}
 
-'([^\r^\n^']|\\0)'		{printf( "Found a char: %s\n", yytext );};
-\"[^\"]*\"				{printf( "Found a string: %s\n", yytext );}
+'([^\r^\n^']|\\0)'		{return CHAR;};
+\"[^\"]*\"				{return STRING;}
 
 
-"/*"((("*"[^/])?)|[^*])*"*/" {printf( "Skipping multiple line comment\n");}
-"//".*                       {printf( "Skipping single line comment\n");}
+"/*"((("*"[^/])?)|[^*])*"*/" {;}
+"//".*                       {;}
 
-"auto"			 { printf("Found keyword: %s\n", yytext );	}
-"break"			 { printf("Found keyword: %s\n", yytext );	}
-"case"			 { printf("Found keyword: %s\n", yytext );	}
-"char"			 { printf("Found keyword: %s\n", yytext );	}
-"const"			 { printf("Found keyword: %s\n", yytext );	}
-"continue"		 { printf("Found keyword: %s\n", yytext );	}
-"default"		 { printf("Found keyword: %s\n", yytext );	}
-"do"			 { printf("Found keyword: %s\n", yytext );	}
-"double"		 { printf("Found keyword: %s\n", yytext );	}
-"else"			 { printf("Found keyword: %s\n", yytext );	}
-"enum"			 { printf("Found keyword: %s\n", yytext );	}
-"extern"		 { printf("Found keyword: %s\n", yytext );	}
-"float"			 { printf("Found keyword: %s\n", yytext );	}
-"for"			 { printf("Found keyword: %s\n", yytext );	}
-"goto"			 { printf("Found keyword: %s\n", yytext );	}
-"if"			 { printf("Found keyword: %s\n", yytext );	}
-"int"			 { printf("Found keyword: %s\n", yytext );	}
-"long"			 { printf("Found keyword: %s\n", yytext );	}
-"register"		 { printf("Found keyword: %s\n", yytext );	}
-"return"		 { printf("Found keyword: %s\n", yytext );	}
-"short"			 { printf("Found keyword: %s\n", yytext );	}
-"signed"		 { printf("Found keyword: %s\n", yytext );	}
-"sizeof"		 { printf("Found keyword: %s\n", yytext );	}
-"static"		 { printf("Found keyword: %s\n", yytext );	}
-"struct"		 { printf("Found keyword: %s\n", yytext );	}
-"switch"		 { printf("Found keyword: %s\n", yytext );	}
-"typedef"		 { printf("Found keyword: %s\n", yytext );	}
-"define"		 { printf("Found keyword: %s\n", yytext );	}
-"union"			 { printf("Found keyword: %s\n", yytext );	}
-"unsigned"		 { printf("Found keyword: %s\n", yytext );	}
-"void"			 { printf("Found keyword: %s\n", yytext );	}
-"volatile"		 { printf("Found keyword: %s\n", yytext );	}
-"while"			 { printf("Found keyword: %s\n", yytext );	}
+"auto"			 { return KEYWORD_AUTO;	}
+"break"			 { return KEYWORD_BREAK;	}
+"case"			 { return KEYWORD_CASE;	}
+"char"			 { return KEYWORD_CHAR;	}
+"const"			 { return KEYWORD_CONST;	}
+"continue"		 { return KEYWORD_CONTINUE;	}
+"default"		 { return KEYWORD_DEFAULT;	}
+"do"			 { return KEYWORD_DO;	}
+"double"		 { return KEYWORD_DOUBLE;	}
+"else"			 { return KEYWORD_ELSE;	}
+"enum"			 { return KEYWORD_ENUM;	}
+"extern"		 { return KEYWORD_EXTERN;	}
+"float"			 { return KEYWORD_FLOAT;	}
+"for"			 { return KEYWORD_FOR;	}
+"goto"			 { return KEYWORD_GOTO;	}
+"if"			 { return KEYWORD_IF;	}
+"int"			 { return KEYWORD_INT;	}
+"long"			 { return KEYWORD_LONG;	}
+"register"		 { return KEYWORD_REGISTER;	}
+"return"		 { return KEYWORD_RETURN;	}
+"short"			 { return KEYWORD_SHORT;	}
+"signed"		 { return KEYWORD_SIGNED;	}
+"sizeof"		 { return KEYWORD_SIZEOF;	}
+"static"		 { return KEYWORD_STATIC;	}
+"struct"		 { return KEYWORD_STRUCT;	}
+"switch"		 { return KEYWORD_SWITCH;	}
+"typedef"		 { return KEYWORD_TYPEDEF;	}
+"define"		 { return KEYWORD_DEFINE;	}
+"union"			 { return KEYWORD_UNION;	}
+"unsigned"		 { return KEYWORD_UNSIGNED;	}
+"void"			 { return KEYWORD_VOID;	}
+"volatile"		 { return KEYWORD_VOLATILE;	}
+"while"			 { return KEYWORD_WHILE;	}
 
-"..."		 { printf("Found %s\n", yytext );	}
-">>="		 { printf("Found %s\n", yytext );	}
-"<<="		 { printf("Found %s\n", yytext );	}
-"+="		 { printf("Found %s\n", yytext );	}
-"="			 { printf("Found %s\n", yytext );	}
-"-="		 { printf("Found %s\n", yytext );	}
-"*="		 { printf("Found %s\n", yytext );	}
-"/="		 { printf("Found %s\n", yytext );	}
-"&="		 { printf("Found %s\n", yytext );	}
-"^="		 { printf("Found %s\n", yytext );	}
-"|="		 { printf("Found %s\n", yytext );	}
-">>"		 { printf("Found %s\n", yytext );	}
-"<<"		 { printf("Found %s\n", yytext );	}
-"++"		 { printf("Found %s\n", yytext );	}
-"--"		 { printf("Found %s\n", yytext );	}
-"->"		 { printf("Found %s\n", yytext );	}
-"&&"		 { printf("Found %s\n", yytext );	}
-"||"		 { printf("Found %s\n", yytext );	}
-"<="		 { printf("Found %s\n", yytext );	}
-">="		 { printf("Found %s\n", yytext );	}
-"=="		 { printf("Found %s\n", yytext );	}
-"!="		 { printf("Found %s\n", yytext );	}
-";"			 { printf("Found %s\n", yytext );	}
-"."			 { printf("Found %s\n", yytext );	}
-"&"			 { printf("Found %s\n", yytext );	}
-"!"			 { printf("Found %s\n", yytext );	}
-"~"			 { printf("Found %s\n", yytext );	}
-"-"			 { printf("Found %s\n", yytext );	}
-"+"			 { printf("Found %s\n", yytext );	}
-"*"			 { printf("Found %s\n", yytext );	}
-"/"			 { printf("Found %s\n", yytext );	}
-"%"			 { printf("Found %s\n", yytext );	}
-"<"			 { printf("Found %s\n", yytext );	}
-">"			 { printf("Found %s\n", yytext );	}
-"^"			 { printf("Found %s\n", yytext );	}
-"|"			 { printf("Found %s\n", yytext );	}
-"?"			 { printf("Found %s\n", yytext );	}
-"("			 { printf("Found %s\n", yytext );	}
-")"			 { printf("Found %s\n", yytext );	}
-"["			 { printf("Found %s\n", yytext );	}
-"]"			 { printf("Found %s\n", yytext );	}
-("{"|"<%")	 { printf("Found %s\n", yytext );	}
-("}"|"%>")	 { printf("Found %s\n", yytext );	}
-("["|"<:")	 { printf("Found %s\n", yytext );	}
-("]"|":>")	 { printf("Found %s\n", yytext );	}
+"..."		 { return THREE_DOTS;	}
+">>="		 { return RIGHT_SHIFT_ASSIGNMENT;	}
+"<<="		 { return LEFT_SHIFT_ASSIGNMENT;	}
+"+="		 { return INCREMENT_ASSIGNMENT;	}
+"="			 { return ASSIGNMENT;	}
+"-="		 { return DECREMENT_ASSIGNMENT;	}
+"*="		 { return MULTIPLY_ASSIGNMENT;	}
+"/="		 { return DIVIDE_ASSIGNMENT;	}
+"&="		 { return BITWISE_AND_ASSIGNMENT;	}
+"^="		 { return BITWISE_XOR_ASSIGNMENT;	}
+"|="		 { return BITWISE_OR_ASSIGNMENT;	}
+">>"		 { return RIGHT_SHIFT;	}
+"<<"		 { return INCREMENT;	}
+"++"		 { return DECREMENT;	}
+"--"		 { return ARROW;	}
+"->"		 { return LOGICAL_AND;	}
+"&&"		 { return LOGICAL_OR;	}
+"||"		 { return LESS_EQUAL;	}
+"<="		 { return GREATER_EQUAL;	}
+">="		 { return LESS_EQUAL;	}
+"=="		 { return EQUAL;	}
+"!="		 { return NOT_EQUAL;	}
+";"			 { return SEMICOLON;	}
+"."			 { return DOT;	}
+"&"			 { return BITWISE_AND;	}
+"!"			 { return NOT;	}
+"~"			 { return TILDA;	}
+"-"			 { return MINUS;	}
+"+"			 { return PLUS;	}
+"*"			 { return MULTIPLY;	}
+"/"			 { return DIVIDE;	}
+"%"			 { return MODULO;	}
+"<"			 { return LESS;	}
+">"			 { return GREATER;	}
+"^"			 { return XOR;	}
+"|"			 { return BITWISE_OR;	}
+"?"			 { return CONDITIONAL;	}
+"("			 { return OPEN_PARANTHESIS;	}
+")"			 { return CLOSED_PARANTHESIS;	}
+"["			 { return OPEN_BRACKETS;	}
+"]"			 { return CLOSED_BRACKETS;	}
+("{"|"<%")	 { return OPEN_BRACES;	}
+("}"|"%>")	 { return CLOSED_BRACES;	}
 
-.			 {printf( "Unknown character %s\n", yytext);}
+.			 {return UNKNOWN;}
 %%
 
 int main(int argc, char** argv)

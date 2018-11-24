@@ -21,6 +21,9 @@
     <ClCompile Include="sample.flex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sample.tab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input1.c.txt">
@@ -29,5 +32,13 @@
     <Text Include="input2.c.txt">
       <Filter>Source Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Bison Include="sample.y" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sample.tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
