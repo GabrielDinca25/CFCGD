@@ -87,14 +87,14 @@ int mylineno = 1;
 "^="		 { return BITWISE_XOR_ASSIGNMENT;	}
 "|="		 { return BITWISE_OR_ASSIGNMENT;	}
 ">>"		 { return RIGHT_SHIFT;	}
-"<<"		 { return INCREMENT;	}
-"++"		 { return DECREMENT;	}
-"--"		 { return ARROW;	}
-"->"		 { return LOGICAL_AND;	}
-"&&"		 { return LOGICAL_OR;	}
-"||"		 { return LESS_EQUAL;	}
-"<="		 { return GREATER_EQUAL;	}
-">="		 { return LESS_EQUAL;	}
+"<<"		 { return LEFT_SHIFT;}
+"++"		 { return INCREMENT;	} 
+"--"		 { return DECREMENT;	}
+"->"		 { return ARROW;	}
+"&&"		 { return LOGICAL_AND;	}
+"||"		 { return LOGICAL_OR;	}
+"<="		 { return LESS_EQUAL;	}
+">="		 { return GREATER_EQUAL;	}
 "=="		 { return EQUAL;	}
 "!="		 { return NOT_EQUAL;	}
 ";"			 { return SEMICOLON;	}
@@ -118,7 +118,7 @@ int mylineno = 1;
 "]"			 { return CLOSED_BRACKETS;	}
 ("{"|"<%")	 { return OPEN_BRACES;	}
 ("}"|"%>")	 { return CLOSED_BRACES;	}
-
+			 
 .			 {return UNKNOWN;}
 %%
 
