@@ -34,7 +34,7 @@
 # define YY_YY_SAMPLE_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+# define YYDEBUG 1
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -45,25 +45,96 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    print = 258,
-    exit_command = 259,
-    number = 260,
-    identifier = 261
+    INT = 258,
+    FLOAT = 259,
+    ID = 260,
+    CHAR = 261,
+    STRING = 262,
+    SCOMMENT = 263,
+    MCOMMENT = 264,
+    AUTO = 265,
+    BREAK = 266,
+    CASE = 267,
+    CONST = 268,
+    CONTINUE = 269,
+    DEFAULT = 270,
+    DO = 271,
+    DOUBLE = 272,
+    ELSE = 273,
+    ENUM = 274,
+    EXTERN = 275,
+    FOR = 276,
+    GOTO = 277,
+    IF = 278,
+    LONG = 279,
+    REGISTER = 280,
+    RETURN = 281,
+    SHORT = 282,
+    SIGNED = 283,
+    SIZEOF = 284,
+    STATIC = 285,
+    STRUCT = 286,
+    SWITCH = 287,
+    TYPEDEF = 288,
+    DEFINE = 289,
+    UNION = 290,
+    UNSIGNED = 291,
+    VOID = 292,
+    VOLATILE = 293,
+    WHILE = 294,
+    THREE_DOTS = 295,
+    RIGHT_SHIFT_ASSIGNMENT = 296,
+    LEFT_SHIFT_ASSIGNMENT = 297,
+    INCREMENT_ASSIGNMENT = 298,
+    ASSIGNMENT = 299,
+    DECREMENT_ASSIGNMENT = 300,
+    MULTIPLY_ASSIGNMENT = 301,
+    DIVIDE_ASSIGNMENT = 302,
+    MOD_ASSIGNMENT = 303,
+    BITWISE_AND_ASSIGNMENT = 304,
+    BITWISE_XOR_ASSIGNMENT = 305,
+    BITWISE_OR_ASSIGNMENT = 306,
+    LEFT_SHIFT = 307,
+    RIGHT_SHIFT = 308,
+    INCREMENT = 309,
+    DECREMENT = 310,
+    ARROW = 311,
+    LOGICAL_AND = 312,
+    LOGICAL_OR = 313,
+    LESS_EQUAL = 314,
+    GREATER_EQUAL = 315,
+    EQUAL = 316,
+    NOT_EQUAL = 317,
+    SEMICOLON = 318,
+    DOT = 319,
+    BITWISE_AND = 320,
+    NOT = 321,
+    TILDA = 322,
+    MINUS = 323,
+    PLUS = 324,
+    MULTIPLY = 325,
+    DIVIDE = 326,
+    MODULO = 327,
+    LESS = 328,
+    GREATER = 329,
+    XOR = 330,
+    XOR_ASSIGNMENT = 331,
+    BITWISE_OR = 332,
+    CONDITIONAL = 333,
+    OPEN_PARANTHESIS = 334,
+    CLOSED_PARANTHESIS = 335,
+    OPEN_BRACKETS = 336,
+    CLOSED_BRACKETS = 337,
+    OPEN_BRACES = 338,
+    CLOSED_BRACES = 339,
+    UNKNOWN = 340,
+    INVALID_SYNTAX = 341
   };
 #endif
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-
-union YYSTYPE
-{
-#line 9 "sample.y" /* yacc.c:1913  */
-int num; char id;
-
-#line 64 "sample.tab.h" /* yacc.c:1913  */
-};
-
-typedef union YYSTYPE YYSTYPE;
+typedef int YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

@@ -18,8 +18,12 @@ ID       [a-zA-Z][a-zA-Z0-9]*
 %{
 #include <stdio.h>
 #include <cstdio> 
+#include "Lexer.h"
+#include "sample.tab.h"
 int mylineno = 1;
 
+int column=0;
+int line=0;
 %}
 
 %%
@@ -27,10 +31,10 @@ int mylineno = 1;
 \n  { mylineno++; }
 ^"#".*					{;}
 
-{DIGIT}+				{return INT;}
+{DIGIT}+				{printf("INTEGER "); return INT;}
 {DIGIT}+"."{DIGIT}*		{return FLOAT;}
 
-{ID}					{return ID;}
+{ID}					{printf("ID "); return ID;}
 
 {DIGIT}+{ID}*			{return INVALID_SYNTAX;}
 
@@ -41,48 +45,49 @@ int mylineno = 1;
 "/*"((("*"[^/])?)|[^*])*"*/" {;}
 "//".*                       {;}
 
-"auto"			 { return KEYWORD_AUTO;	}
-"break"			 { return KEYWORD_BREAK;	}
-"case"			 { return KEYWORD_CASE;	}
-"char"			 { return KEYWORD_CHAR;	}
-"const"			 { return KEYWORD_CONST;	}
-"continue"		 { return KEYWORD_CONTINUE;	}
-"default"		 { return KEYWORD_DEFAULT;	}
-"do"			 { return KEYWORD_DO;	}
-"double"		 { return KEYWORD_DOUBLE;	}
-"else"			 { return KEYWORD_ELSE;	}
-"enum"			 { return KEYWORD_ENUM;	}
-"extern"		 { return KEYWORD_EXTERN;	}
-"float"			 { return KEYWORD_FLOAT;	}
-"for"			 { return KEYWORD_FOR;	}
-"goto"			 { return KEYWORD_GOTO;	}
-"if"			 { return KEYWORD_IF;	}
-"int"			 { return KEYWORD_INT;	}
-"long"			 { return KEYWORD_LONG;	}
-"register"		 { return KEYWORD_REGISTER;	}
-"return"		 { return KEYWORD_RETURN;	}
-"short"			 { return KEYWORD_SHORT;	}
-"signed"		 { return KEYWORD_SIGNED;	}
-"sizeof"		 { return KEYWORD_SIZEOF;	}
-"static"		 { return KEYWORD_STATIC;	}
-"struct"		 { return KEYWORD_STRUCT;	}
-"switch"		 { return KEYWORD_SWITCH;	}
-"typedef"		 { return KEYWORD_TYPEDEF;	}
-"define"		 { return KEYWORD_DEFINE;	}
-"union"			 { return KEYWORD_UNION;	}
-"unsigned"		 { return KEYWORD_UNSIGNED;	}
-"void"			 { return KEYWORD_VOID;	}
-"volatile"		 { return KEYWORD_VOLATILE;	}
-"while"			 { return KEYWORD_WHILE;	}
+"auto"			 { return AUTO;	}
+"break"			 { return BREAK;	}
+"case"			 { return CASE;	}
+"char"			 { return CHAR;	}
+"const"			 { return CONST;	}
+"continue"		 { return CONTINUE;	}
+"default"		 { return DEFAULT;	}
+"do"			 { return DO;	}
+"double"		 { return DOUBLE;	}
+"else"			 { return ELSE;	}
+"enum"			 { return ENUM;	}
+"extern"		 { return EXTERN;	}
+"float"			 { return FLOAT;	}
+"for"			 { return FOR;	}
+"goto"			 { return GOTO;	}
+"if"			 { return IF;	}
+"int"			 { printf("INT "); return INT;	}
+"long"			 { return LONG;	}
+"register"		 { return REGISTER;	}
+"return"		 { return RETURN;	}
+"short"			 { return SHORT;	}
+"signed"		 { return SIGNED;	}
+"sizeof"		 { return SIZEOF;	}
+"static"		 { return STATIC;	}
+"struct"		 { return STRUCT;	}
+"switch"		 { return SWITCH;	}
+"typedef"		 { return TYPEDEF;	}
+"define"		 { return DEFINE;	}
+"union"			 { return UNION;	}
+"unsigned"		 { return UNSIGNED;	}
+"void"			 { return VOID;	}
+"volatile"		 { return VOLATILE;	}
+"while"			 { return WHILE;	}
 
 "..."		 { return THREE_DOTS;	}
 ">>="		 { return RIGHT_SHIFT_ASSIGNMENT;	}
 "<<="		 { return LEFT_SHIFT_ASSIGNMENT;	}
 "+="		 { return INCREMENT_ASSIGNMENT;	}
-"="			 { return ASSIGNMENT;	}
+"="			 { printf("ASSIGNMENT "); return ASSIGNMENT;	}
 "-="		 { return DECREMENT_ASSIGNMENT;	}
 "*="		 { return MULTIPLY_ASSIGNMENT;	}
 "/="		 { return DIVIDE_ASSIGNMENT;	}
+"%="		 { return MOD_ASSIGNMENT;	}
 "&="		 { return BITWISE_AND_ASSIGNMENT;	}
 "^="		 { return BITWISE_XOR_ASSIGNMENT;	}
 "|="		 { return BITWISE_OR_ASSIGNMENT;	}
@@ -97,7 +102,7 @@ int mylineno = 1;
 ">="		 { return GREATER_EQUAL;	}
 "=="		 { return EQUAL;	}
 "!="		 { return NOT_EQUAL;	}
-";"			 { return SEMICOLON;	}
+";"			 { printf("SEMICOLON "); return SEMICOLON;	}
 "."			 { return DOT;	}
 "&"			 { return BITWISE_AND;	}
 "!"			 { return NOT;	}
@@ -110,6 +115,7 @@ int mylineno = 1;
 "<"			 { return LESS;	}
 ">"			 { return GREATER;	}
 "^"			 { return XOR;	}
+"^="			 { return XOR_ASSIGNMENT;	}
 "|"			 { return BITWISE_OR;	}
 "?"			 { return CONDITIONAL;	}
 "("			 { return OPEN_PARANTHESIS;	}
@@ -122,7 +128,7 @@ int mylineno = 1;
 .			 {return UNKNOWN;}
 %%
 
-int main(int argc, char** argv)
+/*int main(int argc, char** argv)
 { 
   ++argv, --argc;
   FILE *stream;
@@ -136,9 +142,17 @@ int main(int argc, char** argv)
 
   yylex();
   return 0;
-}
+}*/
 
 int yywrap()
 {
 return 1;
 }
+
+void initLexer(FILE *fp) {
+		column=0;
+		line=0;
+		yylloc.last_line=0;
+        yyin = fp;
+}
+

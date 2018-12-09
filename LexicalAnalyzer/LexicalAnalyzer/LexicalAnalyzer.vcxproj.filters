@@ -24,14 +24,9 @@
     <ClCompile Include="sample.tab.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="input1.c.txt">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </Text>
-    <Text Include="input2.c.txt">
-      <Filter>Source Files</Filter>
-    </Text>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Bison Include="sample.y" />

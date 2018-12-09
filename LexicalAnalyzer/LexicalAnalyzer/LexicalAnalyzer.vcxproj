@@ -22,12 +22,9 @@
     <Flex Include="sample.l" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="sample.flex.cpp" />
     <ClCompile Include="sample.tab.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="input1.c.txt" />
-    <Text Include="input2.c.txt" />
   </ItemGroup>
   <ItemGroup>
     <Bison Include="sample.y" />
@@ -95,6 +92,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

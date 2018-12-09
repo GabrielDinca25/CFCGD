@@ -1,4 +1,10 @@
 ﻿  Process "sample.y" bison file
+sample.y : warning : 16 nonterminals useless in grammar [-Wother]
+sample.y : warning : 48 rules useless in grammar [-Wother]
   Process "sample.l" flex file
+  main.cpp
   sample.flex.cpp
+  sample.tab.cpp
+c:\users\gabi\source\repos\lexicalanalyzer\lexicalanalyzer\sample.tab.cpp(1580): warning C4065: switch statement contains 'default' but no 'case' labels
+  Generating Code...
   LexicalAnalyzer.vcxproj -> C:\Users\Gabi\source\repos\LexicalAnalyzer\Debug\LexicalAnalyzer.exe

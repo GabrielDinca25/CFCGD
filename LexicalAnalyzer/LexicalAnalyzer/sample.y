@@ -1,114 +1,108 @@
 %{
-void yyerror (char *s);
+void yyerror (const char *s);
 int yylex();
 #include <stdio.h>     /* C declarations used in actions */
 #include <stdlib.h>
 #include <ctype.h>
+#include "Lexer.h"
+#define YYDEBUG 1
 %}
 
 //%start line
 //%token print
 //%token exit_command
 //%token <num> number
-//%token <id> identifier
+//%token <ID> ID
 //%type <num> line exp term 
-//%type <id> assignment
+//%type <ID> assignment
+%token INT
+%token FLOAT
+%token ID
+%token CHAR
+%token STRING
+%token SCOMMENT
+%token MCOMMENT
+%token AUTO
+%token BREAK
+%token CASE
+%token CONST
+%token CONTINUE
+%token DEFAULT
+%token DO
+%token DOUBLE
+%token ELSE
+%token ENUM
+%token EXTERN
+%token FOR
+%token GOTO
+%token IF
+%token LONG
+%token REGISTER
+%token RETURN
+%token SHORT
+%token SIGNED
+%token SIZEOF
+%token STATIC
+%token STRUCT
+%token SWITCH
+%token TYPEDEF
+%token DEFINE
+%token UNION
+%token UNSIGNED
+%token VOID
+%token VOLATILE
+%token WHILE
 
-%token INT,
-%token FLOAT,
-%token ID,
-%token CHAR,
-%token STRING,
-%token SCOMMENT,
-%token MCOMMENT,
-%token KEYWORD_AUTO,
-%token KEYWORD_BREAK,
-%token KEYWORD_CASE,
-%token KEYWORD_CHAR,
-%token KEYWORD_CONST,
-%token KEYWORD_CONTINUE,
-%token KEYWORD_DEFAULT,
-%token KEYWORD_DO,
-%token KEYWORD_DOUBLE,
-%token KEYWORD_ELSE,
-%token KEYWORD_ENUM,
-%token KEYWORD_EXTERN,
-%token KEYWORD_FLOAT,
-%token KEYWORD_FOR,
-%token KEYWORD_GOTO,
-%token KEYWORD_IF,
-%token KEYWORD_INT,
-%token KEYWORD_LONG,
-%token KEYWORD_REGISTER,
-%token KEYWORD_RETURN,
-%token KEYWORD_SHORT,
-%token KEYWORD_SIGNED,
-%token KEYWORD_SIZEOF,
-%token KEYWORD_STATIC,
-%token KEYWORD_STRUCT,
-%token KEYWORD_SWITCH,
-%token KEYWORD_TYPEDEF,
-%token KEYWORD_DEFINE,
-%token KEYWORD_UNION,
-%token KEYWORD_UNSIGNED,
-%token KEYWORD_VOID,
-%token KEYWORD_VOLATILE,
-%token KEYWORD_WHILE,
+%token THREE_DOTS
+%token RIGHT_SHIFT_ASSIGNMENT
+%token LEFT_SHIFT_ASSIGNMENT
+%token INCREMENT_ASSIGNMENT
+%token ASSIGNMENT
+%token DECREMENT_ASSIGNMENT
+%token MULTIPLY_ASSIGNMENT
+%token DIVIDE_ASSIGNMENT
+%token MOD_ASSIGNMENT
+%token BITWISE_AND_ASSIGNMENT
+%token BITWISE_XOR_ASSIGNMENT
+%token BITWISE_OR_ASSIGNMENT
+%token LEFT_SHIFT
+%token RIGHT_SHIFT
+%token INCREMENT
+%token DECREMENT
+%token ARROW
+%token LOGICAL_AND
+%token LOGICAL_OR
+%token LESS_EQUAL
+%token GREATER_EQUAL
+%token EQUAL
+%token NOT_EQUAL
+%token SEMICOLON
+%token DOT
+%token BITWISE_AND
+%token NOT
+%token TILDA
+%token MINUS
+%token PLUS
+%token MULTIPLY
+%token DIVIDE
+%token MODULO
+%token LESS
+%token GREATER
+%token XOR
+%token XOR_ASSIGNMENT
+%token BITWISE_OR
+%token CONDITIONAL
+%token OPEN_PARANTHESIS
+%token CLOSED_PARANTHESIS
+%token OPEN_BRACKETS
+%token CLOSED_BRACKETS
+%token OPEN_BRACES
+%token CLOSED_BRACES
+%token UNKNOWN
+%token INVALID_SYNTAX
 
-%token THREE_DOTS,
-%token RIGHT_SHIFT_ASSIGNMENT,
-%token LEFT_SHIFT_ASSIGNMENT,
-%token INCREMENT_ASSIGNMENT,
-%token ASSIGNMENT,
-%token DECREMENT_ASSIGNMENT,
-%token MULTIPLY_ASSIGNMENT,
-%token DIVIDE_ASSIGNMENT,
-%token BITWISE_AND_ASSIGNMENT,
-%token BITWISE_XOR_ASSIGNMENT,
-%token BITWISE_OR_ASSIGNMENT,
-%token RIGHT_SHIFT,
-%token LEFT_SHIFT,
-%token INCREMENT,
-%token DECREMENT,
-%token ARROW,
-%token LOGICAL_AND,
-%token LOGICAL_OR,
-%token LESS_EQUAL,
-%token GREATER_EQUAL,
-%token EQUAL,
-%token NOT_EQUAL,
-%token SEMICOLON,
-%token DOT,
-%token BITWISE_AND,
-%token NOT,
-%token TILDA,
-%token MINUS,
-%token PLUS,
-%token MULTIPLY,
-%token DIVIDE,
-%token MODULO,
-%token LESS,
-%token GREATER,
-%token XOR,
-%token BITWISE_OR,
-%token CONDITIONAL,
-%token OPEN_PARANTHESIS,
-%token CLOSED_PARANTHESIS,
-%token OPEN_BRACKETS,
-%token CLOSED_BRACKETS,
-%token OPEN_BRACES,
-%token CLOSED_BRACES,
-%token UNKNOWN,
-
-%start unit
+%start primary_expression
 %%
-
-primary_expresion
-	: ID
-	| CHAR
-	| STRING
-	| '(' expression ')'
-	;
 
 expression
 	: assignment_expression
@@ -187,23 +181,19 @@ multiplicative_expression
 	| multiplicative_expression '%' cast_expression
 	;
 
-cast_expression
-	: unary_expression
-	| '(' type_name ')' cast_expression
-	;
 
 assignment_operator
 	: '='
-	| MUL_ASSIGN
-	| DIV_ASSIGN
-	| MOD_ASSIGN
-	| ADD_ASSIGN
-	| SUB_ASSIGN
-	| LEFT_ASSIGN
-	| RIGHT_ASSIGN
-	| AND_ASSIGN
-	| XOR_ASSIGN
-	| OR_ASSIGN
+	| MULTIPLY_ASSIGNMENT
+	| DIVIDE_ASSIGNMENT
+	| MOD_ASSIGNMENT
+	| INCREMENT_ASSIGNMENT
+	| DECREMENT_ASSIGNMENT
+	| LEFT_SHIFT_ASSIGNMENT
+	| RIGHT_SHIFT_ASSIGNMENT
+	| BITWISE_AND_ASSIGNMENT
+	| XOR_ASSIGNMENT
+	| BITWISE_OR_ASSIGNMENT
 	;
 unary_expression
 	: postfix_expression
@@ -246,7 +236,7 @@ argument_expression_list
 
 primary_expression
 	: ID
-	| CHAR
+//	| CHAR
 	| STRING
 	| '(' expression ')'
 	;
@@ -298,7 +288,6 @@ type_specifier
 	| UNSIGNED
 	| struct_or_union_specifier
 	| enum_specifier
-	| TYPE_NAME
 	;
 
 struct_or_union_specifier
@@ -341,8 +330,8 @@ struct_declarator
 
 enum_specifier
 	: ENUM '{' enumerator_list '}'
-	| ENUM IDENTIFIER '{' enumerator_list '}'
-	| ENUM IDENTIFIER
+	| ENUM ID '{' enumerator_list '}'
+	| ENUM ID
 	;
 
 enumerator_list
@@ -390,7 +379,7 @@ type_qualifier_list
 
 parameter_type_list
 	: parameter_list
-	| parameter_list ',' ELLIPSIS
+	| parameter_list ',' THREE_DOTS
 	;
 
 parameter_list
@@ -494,17 +483,13 @@ iteration_statement
 	;
 
 jump_statement
-	: GOTO IDENTIFIER ';'
+	: GOTO ID ';'
 	| CONTINUE ';'
 	| BREAK ';'
 	| RETURN ';'
 	| RETURN expression ';'
 	;
 
-translation_unit
-	: external_declaration
-	| translation_unit external_declaration
-	;
 
 external_declaration
 	: function_definition
@@ -516,6 +501,22 @@ function_definition
 	| declaration_specifiers declarator compound_statement
 	| declarator declaration_list compound_statement
 	| declarator compound_statement
-	;
+;
 
 %%
+
+int parse(char* fileName) {
+	FILE* pf;
+	fopen_s(&pf, fileName, "r" );
+	if(!pf){
+		printf("File %s could not be opened", fileName);	
+	}
+	initLexer(pf);
+	yyparse();
+    fclose(pf);
+	return 1;
+}
+
+void yyerror(const char* s) {
+	printf("%s", s);
+}
