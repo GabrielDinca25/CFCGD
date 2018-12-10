@@ -28,22 +28,7 @@ int line=0;
 
 %%
 [ \t]         ;
-\n  { mylineno++; }
-^"#".*					{;}
 
-{DIGIT}+				{printf("INTEGER "); return INT;}
-{DIGIT}+"."{DIGIT}*		{return FLOAT;}
-
-{ID}					{printf("ID "); return ID;}
-
-{DIGIT}+{ID}*			{return INVALID_SYNTAX;}
-
-'([^\r^\n^']|\\0)'		{return CHAR;};
-\"[^\"]*\"				{return STRING;}
-
-
-"/*"((("*"[^/])?)|[^*])*"*/" {;}
-"//".*                       {;}
 
 "auto"			 { return AUTO;	}
 "break"			 { return BREAK;	}
@@ -124,6 +109,23 @@ int line=0;
 "]"			 { return CLOSED_BRACKETS;	}
 ("{"|"<%")	 { return OPEN_BRACES;	}
 ("}"|"%>")	 { return CLOSED_BRACES;	}
+
+\n  { printf("new line "); mylineno++; }
+^"#".*					{;}
+
+{DIGIT}+				{printf("INTEGER "); return INT;}
+{DIGIT}+"."{DIGIT}*		{return FLOAT;}
+
+{ID}					{printf("ID "); return ID;}
+
+{DIGIT}+{ID}*			{return INVALID_SYNTAX;}
+
+'([^\r^\n^']|\\0)'		{return CHAR;};
+\"[^\"]*\"				{return STRING;}
+
+
+"/*"((("*"[^/])?)|[^*])*"*/" {;}
+"//".*                       {;}
 			 
 .			 {return UNKNOWN;}
 %%

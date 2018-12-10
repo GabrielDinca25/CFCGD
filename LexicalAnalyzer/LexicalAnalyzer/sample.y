@@ -53,6 +53,7 @@ int yylex();
 %token VOLATILE
 %token WHILE
 
+
 %token THREE_DOTS
 %token RIGHT_SHIFT_ASSIGNMENT
 %token LEFT_SHIFT_ASSIGNMENT
@@ -101,7 +102,7 @@ int yylex();
 %token UNKNOWN
 %token INVALID_SYNTAX
 
-%start primary_expression
+%start jump_statement
 %%
 
 expression
@@ -483,11 +484,11 @@ iteration_statement
 	;
 
 jump_statement
-	: GOTO ID ';'
-	| CONTINUE ';'
-	| BREAK ';'
-	| RETURN ';'
-	| RETURN expression ';'
+	: GOTO ID SEMICOLON
+	| CONTINUE SEMICOLON
+	| BREAK SEMICOLON
+	| RETURN SEMICOLON
+	| RETURN expression SEMICOLON
 	;
 
 

@@ -32,6 +32,9 @@
   <ItemGroup>
     <ClInclude Include="sample.tab.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="OUTPUT.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{70EC4AC4-7C2D-4051-817C-7B67A759A62E}</ProjectGuid>

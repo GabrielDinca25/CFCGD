@@ -363,31 +363,31 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[226] =
     {   0,
-        0,    0,    0,    0,   92,   90,    1,    2,   71,   90,
-       77,   70,   90,   84,   85,   75,   74,   73,   69,   76,
-        4,   68,   78,   49,   79,   83,    6,   86,   87,   80,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,   88,   82,   89,   72,    3,
-       91,   67,    0,    9,   53,   89,   62,   54,    0,    0,
-       51,   59,   48,   60,   50,   61,    0,    0,   11,   52,
-        5,    4,    7,   88,   58,   64,   66,   65,   57,    6,
-       55,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        0,    0,    0,    0,   92,   90,    1,   80,   61,   90,
+       67,   60,   90,   74,   75,   65,   64,   63,   59,   66,
+       82,   58,   68,   39,   69,   73,   84,   76,   77,   70,
+       84,   84,   84,   84,   84,   84,   84,   84,   84,   84,
+       84,   84,   84,   84,   84,   78,   72,   79,   62,   81,
+       91,   57,    0,   87,   43,   79,   52,   44,    0,    0,
+       41,   49,   38,   50,   40,   51,    0,    0,   89,   42,
+       83,   82,   85,   78,   48,   54,   56,   55,   47,   84,
+       45,   84,   84,   84,   84,   84,   84,    9,   84,   84,
+       84,   84,   84,   84,   17,   84,   84,   84,   84,   84,
 
-        6,    6,    6,    6,    6,    6,   56,   63,    3,    8,
-       45,    0,    0,   11,    5,    7,    7,   47,   46,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,   10,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+       84,   84,   84,   84,   84,   84,   46,   53,   81,   86,
+       35,    0,    0,   89,   83,   85,   85,   37,   36,   84,
+       84,   84,   84,   84,   84,   84,   84,   84,   84,   84,
+       15,   84,   18,   84,   84,   84,   84,   84,   84,   84,
+       84,   84,   84,   84,   84,   84,   84,   84,   88,    2,
+       84,    4,    5,   84,   84,   84,   84,   84,   11,   12,
+       84,   84,   16,   19,   84,   84,   84,   84,   84,   84,
+       84,   84,   84,   84,   84,   32,   84,   84,    3,    6,
+       84,   84,   84,   84,   84,   14,   84,   84,   22,   84,
+       84,   84,   84,   84,   84,   30,   84,   84,   34,   84,
 
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    0
+       84,   29,   10,   13,   84,   21,   23,   24,   25,   26,
+       27,   84,   84,   84,   84,    8,   84,   28,   84,   84,
+        7,   20,   31,   33,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -894,456 +894,456 @@ YY_RULE_SETUP
 ;
 	YY_BREAK
 case 2:
-/* rule 2 can match eol */
 YY_RULE_SETUP
-#line 31 "sample.l"
-{ mylineno++; }
+#line 33 "sample.l"
+{ return AUTO;	}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 32 "sample.l"
-{;}
+#line 34 "sample.l"
+{ return BREAK;	}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 34 "sample.l"
-{printf("INTEGER "); return INT;}
+#line 35 "sample.l"
+{ return CASE;	}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 35 "sample.l"
-{return FLOAT;}
+#line 36 "sample.l"
+{ return CHAR;	}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 37 "sample.l"
-{printf("ID "); return ID;}
+{ return CONST;	}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 39 "sample.l"
-{return INVALID_SYNTAX;}
+#line 38 "sample.l"
+{ return CONTINUE;	}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 41 "sample.l"
-{return CHAR;};
+#line 39 "sample.l"
+{ return DEFAULT;	}
 	YY_BREAK
 case 9:
-/* rule 9 can match eol */
 YY_RULE_SETUP
-#line 42 "sample.l"
-{return STRING;}
+#line 40 "sample.l"
+{ return DO;	}
 	YY_BREAK
 case 10:
-/* rule 10 can match eol */
 YY_RULE_SETUP
-#line 45 "sample.l"
-{;}
+#line 41 "sample.l"
+{ return DOUBLE;	}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 46 "sample.l"
-{;}
+#line 42 "sample.l"
+{ return ELSE;	}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 48 "sample.l"
-{ return AUTO;	}
+#line 43 "sample.l"
+{ return ENUM;	}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 49 "sample.l"
-{ return BREAK;	}
+#line 44 "sample.l"
+{ return EXTERN;	}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 50 "sample.l"
-{ return CASE;	}
+#line 45 "sample.l"
+{ return FLOAT;	}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 51 "sample.l"
-{ return CHAR;	}
+#line 46 "sample.l"
+{ return FOR;	}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 52 "sample.l"
-{ return CONST;	}
+#line 47 "sample.l"
+{ return GOTO;	}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 53 "sample.l"
-{ return CONTINUE;	}
+#line 48 "sample.l"
+{ return IF;	}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 54 "sample.l"
-{ return DEFAULT;	}
+#line 49 "sample.l"
+{ printf("INT "); return INT;	}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 55 "sample.l"
-{ return DO;	}
+#line 50 "sample.l"
+{ return LONG;	}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 56 "sample.l"
-{ return DOUBLE;	}
+#line 51 "sample.l"
+{ return REGISTER;	}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 57 "sample.l"
-{ return ELSE;	}
+#line 52 "sample.l"
+{ return RETURN;	}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 58 "sample.l"
-{ return ENUM;	}
+#line 53 "sample.l"
+{ return SHORT;	}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 59 "sample.l"
-{ return EXTERN;	}
+#line 54 "sample.l"
+{ return SIGNED;	}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 60 "sample.l"
-{ return FLOAT;	}
+#line 55 "sample.l"
+{ return SIZEOF;	}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 61 "sample.l"
-{ return FOR;	}
+#line 56 "sample.l"
+{ return STATIC;	}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 62 "sample.l"
-{ return GOTO;	}
+#line 57 "sample.l"
+{ return STRUCT;	}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 63 "sample.l"
-{ return IF;	}
+#line 58 "sample.l"
+{ return SWITCH;	}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 64 "sample.l"
-{ printf("INT "); return INT;	}
+#line 59 "sample.l"
+{ return TYPEDEF;	}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 65 "sample.l"
-{ return LONG;	}
+#line 60 "sample.l"
+{ return DEFINE;	}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 66 "sample.l"
-{ return REGISTER;	}
+#line 61 "sample.l"
+{ return UNION;	}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 67 "sample.l"
-{ return RETURN;	}
+#line 62 "sample.l"
+{ return UNSIGNED;	}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 68 "sample.l"
-{ return SHORT;	}
+#line 63 "sample.l"
+{ return VOID;	}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 69 "sample.l"
-{ return SIGNED;	}
+#line 64 "sample.l"
+{ return VOLATILE;	}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 70 "sample.l"
-{ return SIZEOF;	}
+#line 65 "sample.l"
+{ return WHILE;	}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 71 "sample.l"
-{ return STATIC;	}
+#line 67 "sample.l"
+{ return THREE_DOTS;	}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 72 "sample.l"
-{ return STRUCT;	}
+#line 68 "sample.l"
+{ return RIGHT_SHIFT_ASSIGNMENT;	}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 73 "sample.l"
-{ return SWITCH;	}
+#line 69 "sample.l"
+{ return LEFT_SHIFT_ASSIGNMENT;	}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 74 "sample.l"
-{ return TYPEDEF;	}
+#line 70 "sample.l"
+{ return INCREMENT_ASSIGNMENT;	}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 75 "sample.l"
-{ return DEFINE;	}
+#line 71 "sample.l"
+{ printf("ASSIGNMENT "); return ASSIGNMENT;	}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 76 "sample.l"
-{ return UNION;	}
+#line 72 "sample.l"
+{ return DECREMENT_ASSIGNMENT;	}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 77 "sample.l"
-{ return UNSIGNED;	}
+#line 73 "sample.l"
+{ return MULTIPLY_ASSIGNMENT;	}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 78 "sample.l"
-{ return VOID;	}
+#line 74 "sample.l"
+{ return DIVIDE_ASSIGNMENT;	}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 79 "sample.l"
-{ return VOLATILE;	}
+#line 75 "sample.l"
+{ return MOD_ASSIGNMENT;	}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 80 "sample.l"
-{ return WHILE;	}
+#line 76 "sample.l"
+{ return BITWISE_AND_ASSIGNMENT;	}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 82 "sample.l"
-{ return THREE_DOTS;	}
+#line 77 "sample.l"
+{ return BITWISE_XOR_ASSIGNMENT;	}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 83 "sample.l"
-{ return RIGHT_SHIFT_ASSIGNMENT;	}
+#line 78 "sample.l"
+{ return BITWISE_OR_ASSIGNMENT;	}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 84 "sample.l"
-{ return LEFT_SHIFT_ASSIGNMENT;	}
+#line 79 "sample.l"
+{ return RIGHT_SHIFT;	}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 85 "sample.l"
-{ return INCREMENT_ASSIGNMENT;	}
+#line 80 "sample.l"
+{ return LEFT_SHIFT;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 86 "sample.l"
-{ printf("ASSIGNMENT "); return ASSIGNMENT;	}
+#line 81 "sample.l"
+{ return INCREMENT;	} 
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 87 "sample.l"
-{ return DECREMENT_ASSIGNMENT;	}
+#line 82 "sample.l"
+{ return DECREMENT;	}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 88 "sample.l"
-{ return MULTIPLY_ASSIGNMENT;	}
+#line 83 "sample.l"
+{ return ARROW;	}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 89 "sample.l"
-{ return DIVIDE_ASSIGNMENT;	}
+#line 84 "sample.l"
+{ return LOGICAL_AND;	}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 90 "sample.l"
-{ return MOD_ASSIGNMENT;	}
+#line 85 "sample.l"
+{ return LOGICAL_OR;	}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 91 "sample.l"
-{ return BITWISE_AND_ASSIGNMENT;	}
+#line 86 "sample.l"
+{ return LESS_EQUAL;	}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 92 "sample.l"
-{ return BITWISE_XOR_ASSIGNMENT;	}
+#line 87 "sample.l"
+{ return GREATER_EQUAL;	}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 93 "sample.l"
-{ return BITWISE_OR_ASSIGNMENT;	}
+#line 88 "sample.l"
+{ return EQUAL;	}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 94 "sample.l"
-{ return RIGHT_SHIFT;	}
+#line 89 "sample.l"
+{ return NOT_EQUAL;	}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 95 "sample.l"
-{ return LEFT_SHIFT;}
+#line 90 "sample.l"
+{ printf("SEMICOLON "); return SEMICOLON;	}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 96 "sample.l"
-{ return INCREMENT;	} 
+#line 91 "sample.l"
+{ return DOT;	}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 97 "sample.l"
-{ return DECREMENT;	}
+#line 92 "sample.l"
+{ return BITWISE_AND;	}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 98 "sample.l"
-{ return ARROW;	}
+#line 93 "sample.l"
+{ return NOT;	}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 99 "sample.l"
-{ return LOGICAL_AND;	}
+#line 94 "sample.l"
+{ return TILDA;	}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 100 "sample.l"
-{ return LOGICAL_OR;	}
+#line 95 "sample.l"
+{ return MINUS;	}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 101 "sample.l"
-{ return LESS_EQUAL;	}
+#line 96 "sample.l"
+{ return PLUS;	}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 102 "sample.l"
-{ return GREATER_EQUAL;	}
+#line 97 "sample.l"
+{ return MULTIPLY;	}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 103 "sample.l"
-{ return EQUAL;	}
+#line 98 "sample.l"
+{ return DIVIDE;	}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 104 "sample.l"
-{ return NOT_EQUAL;	}
+#line 99 "sample.l"
+{ return MODULO;	}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 105 "sample.l"
-{ printf("SEMICOLON "); return SEMICOLON;	}
+#line 100 "sample.l"
+{ return LESS;	}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 106 "sample.l"
-{ return DOT;	}
+#line 101 "sample.l"
+{ return GREATER;	}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 107 "sample.l"
-{ return BITWISE_AND;	}
+#line 102 "sample.l"
+{ return XOR;	}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 108 "sample.l"
-{ return NOT;	}
+#line 103 "sample.l"
+{ return XOR_ASSIGNMENT;	}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 109 "sample.l"
-{ return TILDA;	}
+#line 104 "sample.l"
+{ return BITWISE_OR;	}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 110 "sample.l"
-{ return MINUS;	}
+#line 105 "sample.l"
+{ return CONDITIONAL;	}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 111 "sample.l"
-{ return PLUS;	}
+#line 106 "sample.l"
+{ return OPEN_PARANTHESIS;	}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 112 "sample.l"
-{ return MULTIPLY;	}
+#line 107 "sample.l"
+{ return CLOSED_PARANTHESIS;	}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 113 "sample.l"
-{ return DIVIDE;	}
+#line 108 "sample.l"
+{ return OPEN_BRACKETS;	}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 114 "sample.l"
-{ return MODULO;	}
+#line 109 "sample.l"
+{ return CLOSED_BRACKETS;	}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 115 "sample.l"
-{ return LESS;	}
+#line 110 "sample.l"
+{ return OPEN_BRACES;	}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 116 "sample.l"
-{ return GREATER;	}
+#line 111 "sample.l"
+{ return CLOSED_BRACES;	}
 	YY_BREAK
 case 80:
+/* rule 80 can match eol */
 YY_RULE_SETUP
-#line 117 "sample.l"
-{ return XOR;	}
+#line 113 "sample.l"
+{ printf("new line "); mylineno++; }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 118 "sample.l"
-{ return XOR_ASSIGNMENT;	}
+#line 114 "sample.l"
+{;}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 119 "sample.l"
-{ return BITWISE_OR;	}
+#line 116 "sample.l"
+{printf("INTEGER "); return INT;}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 120 "sample.l"
-{ return CONDITIONAL;	}
+#line 117 "sample.l"
+{return FLOAT;}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 121 "sample.l"
-{ return OPEN_PARANTHESIS;	}
+#line 119 "sample.l"
+{printf("ID "); return ID;}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 122 "sample.l"
-{ return CLOSED_PARANTHESIS;	}
+#line 121 "sample.l"
+{return INVALID_SYNTAX;}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
 #line 123 "sample.l"
-{ return OPEN_BRACKETS;	}
+{return CHAR;};
 	YY_BREAK
 case 87:
+/* rule 87 can match eol */
 YY_RULE_SETUP
 #line 124 "sample.l"
-{ return CLOSED_BRACKETS;	}
+{return STRING;}
 	YY_BREAK
 case 88:
+/* rule 88 can match eol */
 YY_RULE_SETUP
-#line 125 "sample.l"
-{ return OPEN_BRACES;	}
+#line 127 "sample.l"
+{;}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 126 "sample.l"
-{ return CLOSED_BRACES;	}
+#line 128 "sample.l"
+{;}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 128 "sample.l"
+#line 130 "sample.l"
 {return UNKNOWN;}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 129 "sample.l"
+#line 131 "sample.l"
 ECHO;
 	YY_BREAK
 #line 1349 "sample.flex.cpp"
@@ -2355,7 +2355,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 129 "sample.l"
+#line 131 "sample.l"
 
 
 /*int main(int argc, char** argv)

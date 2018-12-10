@@ -1,1 +1,1 @@
-goto b;
+continue;
