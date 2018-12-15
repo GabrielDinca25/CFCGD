@@ -34,7 +34,7 @@
 # define YY_YY_SAMPLE_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 1
+# define YYDEBUG 0
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -106,29 +106,31 @@ extern int yydebug;
     EQUAL = 316,
     NOT_EQUAL = 317,
     SEMICOLON = 318,
-    DOT = 319,
-    BITWISE_AND = 320,
-    NOT = 321,
-    TILDA = 322,
-    MINUS = 323,
-    PLUS = 324,
-    MULTIPLY = 325,
-    DIVIDE = 326,
-    MODULO = 327,
-    LESS = 328,
-    GREATER = 329,
-    XOR = 330,
-    XOR_ASSIGNMENT = 331,
-    BITWISE_OR = 332,
-    CONDITIONAL = 333,
-    OPEN_PARANTHESIS = 334,
-    CLOSED_PARANTHESIS = 335,
-    OPEN_BRACKETS = 336,
-    CLOSED_BRACKETS = 337,
-    OPEN_BRACES = 338,
-    CLOSED_BRACES = 339,
-    UNKNOWN = 340,
-    INVALID_SYNTAX = 341
+    COLON = 319,
+    DOT = 320,
+    COMMA = 321,
+    BITWISE_AND = 322,
+    NOT = 323,
+    TILDA = 324,
+    MINUS = 325,
+    PLUS = 326,
+    MULTIPLY = 327,
+    DIVIDE = 328,
+    MODULO = 329,
+    LESS = 330,
+    GREATER = 331,
+    XOR = 332,
+    XOR_ASSIGNMENT = 333,
+    BITWISE_OR = 334,
+    CONDITIONAL = 335,
+    OPEN_PARANTHESIS = 336,
+    CLOSED_PARANTHESIS = 337,
+    OPEN_BRACKETS = 338,
+    CLOSED_BRACKETS = 339,
+    OPEN_BRACES = 340,
+    CLOSED_BRACES = 341,
+    UNKNOWN = 342,
+    INVALID_SYNTAX = 343
   };
 #endif
 

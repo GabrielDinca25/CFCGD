@@ -78,7 +78,9 @@ int yylex();
 %token EQUAL
 %token NOT_EQUAL
 %token SEMICOLON
+%token COLON
 %token DOT
+%token COMMA
 %token BITWISE_AND
 %token NOT
 %token TILDA
@@ -102,12 +104,12 @@ int yylex();
 %token UNKNOWN
 %token INVALID_SYNTAX
 
-%start jump_statement
+%start type_specifier
 %%
 
 expression
 	: assignment_expression
-	| expression ',' assignment_expression
+	| expression COMMA assignment_expression
 	;
 
 constant_expression
@@ -121,7 +123,7 @@ assignment_expression
 
 conditional_expression
 	: logical_or_expression 
-	| logical_or_expression '?' expression ':' conditional_expression
+	| logical_or_expression CONDITIONAL expression COLON conditional_expression
 	;
 
 logical_or_expression
@@ -136,17 +138,17 @@ logical_and_expression
 
 inclusive_or_expression
 	: exclusive_or_expression
-	| inclusive_or_expression '|' exclusive_or_expression 
+	| inclusive_or_expression BITWISE_OR exclusive_or_expression 
 	;
 
 exclusive_or_expression
 	: and_expression
-	| exclusive_or_expression '^' and_expression
+	| exclusive_or_expression XOR and_expression
 	;
 	
 and_expression
 	: equality_expression 
-	| and_expression '&' equality_expression
+	| and_expression BITWISE_AND equality_expression
 	;
 
 equality_expression
@@ -157,8 +159,8 @@ equality_expression
 
 relational_expression
 	: shift_expression 
-	| relational_expression '<' shift_expression
-	| relational_expression '>' shift_expression
+	| relational_expression LESS shift_expression
+	| relational_expression GREATER shift_expression
 	| relational_expression LESS_EQUAL shift_expression
 	| relational_expression GREATER_EQUAL shift_expression
 	;
@@ -171,20 +173,20 @@ shift_expression
 
 additive_expression
 	: multiplicative_expression
-	| additive_expression '+' multiplicative_expression
-	| additive_expression '-' multiplicative_expression
+	| additive_expression PLUS multiplicative_expression
+	| additive_expression MINUS multiplicative_expression
 	;
 
 multiplicative_expression
 	: cast_expression
-	| multiplicative_expression '*' cast_expression
-	| multiplicative_expression '/' cast_expression
-	| multiplicative_expression '%' cast_expression
+	| multiplicative_expression MULTIPLY cast_expression
+	| multiplicative_expression DIVIDE cast_expression
+	| multiplicative_expression MODULO cast_expression
 	;
 
 
 assignment_operator
-	: '='
+	: ASSIGNMENT
 	| MULTIPLY_ASSIGNMENT
 	| DIVIDE_ASSIGNMENT
 	| MOD_ASSIGNMENT
@@ -204,27 +206,27 @@ unary_expression
 	;
 
 unary_operator
-	: '&'
-	| '*'
-	| '+'
-	| '-'
-	| '~'
-	| '!'
+	: BITWISE_AND
+	| MULTIPLY
+	| PLUS
+	| MINUS
+	| TILDA
+	| NOT
 	;
 
 cast_expression
 	: unary_expression
-	| '(' type_name ')' cast_expression
+	| OPEN_PARANTHESIS type_name CLOSED_PARANTHESIS cast_expression
 	;
 
 
 
 postfix_expression
 	: primary_expression 
-	| postfix_expression '[' expression ']'
-	| postfix_expression '(' ')'
-	| postfix_expression '(' argument_expression_list ')'
-	| postfix_expression '.' ID
+	| postfix_expression OPEN_BRACKETS expression CLOSED_BRACKETS
+	| postfix_expression OPEN_PARANTHESIS CLOSED_PARANTHESIS
+	| postfix_expression OPEN_PARANTHESIS argument_expression_list CLOSED_PARANTHESIS
+	| postfix_expression DOT ID
 	| postfix_expression ARROW ID
 	| postfix_expression INCREMENT
 	| postfix_expression DECREMENT
@@ -232,22 +234,22 @@ postfix_expression
 
 argument_expression_list
 	: assignment_expression
-	| argument_expression_list ',' assignment_expression
+	| argument_expression_list COMMA assignment_expression
 	;
 
 primary_expression
 	: ID
 //	| CHAR
 	| STRING
-	| '(' expression ')'
+	| OPEN_PARANTHESIS expression CLOSED_PARANTHESIS
 	;
 
 
 ///
 
 declaration
-	: declaration_specifiers ';'
-	| declaration_specifiers init_declarator_list ';'
+	: declaration_specifiers SEMICOLON
+	| declaration_specifiers init_declarator_list SEMICOLON
 	;
 
 declaration_specifiers
@@ -261,12 +263,12 @@ declaration_specifiers
 
 init_declarator_list
 	: init_declarator
-	| init_declarator_list ',' init_declarator
+	| init_declarator_list COMMA init_declarator
 	;
 
 init_declarator
 	: declarator
-	| declarator '=' initializer
+	| declarator ASSIGNMENT initializer
 	;
 
 storage_class_specifier
@@ -292,8 +294,8 @@ type_specifier
 	;
 
 struct_or_union_specifier
-	: struct_or_union ID '{' struct_declaration_list '}'
-	| struct_or_union '{' struct_declaration_list '}'
+	: struct_or_union ID OPEN_BRACES struct_declaration_list CLOSED_BRACES
+	| struct_or_union OPEN_BRACES struct_declaration_list CLOSED_BRACES
 	| struct_or_union ID
 	;
 
@@ -308,7 +310,7 @@ struct_declaration_list
 	;
 
 struct_declaration
-	: specifier_qualifier_list struct_declarator_list ';'
+	: specifier_qualifier_list struct_declarator_list SEMICOLON
 	;
 
 specifier_qualifier_list
@@ -320,29 +322,29 @@ specifier_qualifier_list
 
 struct_declarator_list
 	: struct_declarator
-	| struct_declarator_list ',' struct_declarator
+	| struct_declarator_list COMMA struct_declarator
 	;
 
 struct_declarator
 	: declarator
-	| ':' constant_expression
-	| declarator ':' constant_expression
+	| COLON constant_expression
+	| declarator COLON constant_expression
 	;
 
 enum_specifier
-	: ENUM '{' enumerator_list '}'
-	| ENUM ID '{' enumerator_list '}'
+	: ENUM OPEN_BRACES enumerator_list CLOSED_BRACES
+	| ENUM ID OPEN_BRACES enumerator_list CLOSED_BRACES
 	| ENUM ID
 	;
 
 enumerator_list
 	: enumerator
-	| enumerator_list ',' enumerator
+	| enumerator_list COMMA enumerator
 	;
 
 enumerator
 	: ID
-	| ID '=' constant_expression
+	| ID ASSIGNMENT constant_expression
 	;
 
 type_qualifier
@@ -357,19 +359,19 @@ declarator
 
 direct_declarator
 	: ID
-	| '(' declarator ')'
-	| direct_declarator '[' constant_expression ']'
-	| direct_declarator '[' ']'
-	| direct_declarator '(' parameter_type_list ')'
-	| direct_declarator '(' identifier_list ')'
-	| direct_declarator '(' ')'
+	| OPEN_PARANTHESIS declarator CLOSED_PARANTHESIS
+	| direct_declarator OPEN_BRACKETS constant_expression CLOSED_BRACKETS
+	| direct_declarator OPEN_BRACKETS CLOSED_BRACKETS
+	| direct_declarator OPEN_PARANTHESIS parameter_type_list CLOSED_PARANTHESIS
+	| direct_declarator OPEN_PARANTHESIS identifier_list CLOSED_PARANTHESIS
+	| direct_declarator OPEN_PARANTHESIS CLOSED_PARANTHESIS
 	;
 
 pointer
-	: '*'
-	| '*' type_qualifier_list
-	| '*' pointer
-	| '*' type_qualifier_list pointer
+	: MULTIPLY
+	| MULTIPLY type_qualifier_list
+	| MULTIPLY pointer
+	| MULTIPLY type_qualifier_list pointer
 	;
 
 type_qualifier_list
@@ -380,12 +382,12 @@ type_qualifier_list
 
 parameter_type_list
 	: parameter_list
-	| parameter_list ',' THREE_DOTS
+	| parameter_list COMMA THREE_DOTS
 	;
 
 parameter_list
 	: parameter_declaration
-	| parameter_list ',' parameter_declaration
+	| parameter_list COMMA parameter_declaration
 	;
 
 parameter_declaration
@@ -396,7 +398,7 @@ parameter_declaration
 
 identifier_list
 	: ID
-	| identifier_list ',' ID
+	| identifier_list COMMA ID
 	;
 
 type_name
@@ -411,26 +413,26 @@ abstract_declarator
 	;
 
 direct_abstract_declarator
-	: '(' abstract_declarator ')'
-	| '[' ']'
-	| '[' constant_expression ']'
-	| direct_abstract_declarator '[' ']'
-	| direct_abstract_declarator '[' constant_expression ']'
-	| '(' ')'
-	| '(' parameter_type_list ')'
-	| direct_abstract_declarator '(' ')'
-	| direct_abstract_declarator '(' parameter_type_list ')'
+	: OPEN_PARANTHESIS abstract_declarator CLOSED_PARANTHESIS
+	| OPEN_BRACKETS CLOSED_BRACKETS
+	| OPEN_BRACKETS constant_expression CLOSED_BRACKETS
+	| direct_abstract_declarator OPEN_BRACKETS CLOSED_BRACKETS
+	| direct_abstract_declarator OPEN_BRACKETS constant_expression CLOSED_BRACKETS
+	| OPEN_PARANTHESIS CLOSED_PARANTHESIS
+	| OPEN_PARANTHESIS parameter_type_list CLOSED_PARANTHESIS
+	| direct_abstract_declarator OPEN_PARANTHESIS CLOSED_PARANTHESIS
+	| direct_abstract_declarator OPEN_PARANTHESIS parameter_type_list CLOSED_PARANTHESIS
 	;
 
 initializer
 	: assignment_expression
-	| '{' initializer_list '}'
-	| '{' initializer_list ',' '}'
+	| OPEN_BRACES initializer_list CLOSED_BRACES
+	| OPEN_BRACES initializer_list COMMA CLOSED_BRACES
 	;
 
 initializer_list
 	: initializer
-	| initializer_list ',' initializer
+	| initializer_list COMMA initializer
 	;
 
 statement
@@ -443,16 +445,16 @@ statement
 	;
 
 labeled_statement
-	: ID ':' statement
-	| CASE constant_expression ':' statement
-	| DEFAULT ':' statement
+	: ID COLON statement
+	| CASE constant_expression COLON statement
+	| DEFAULT COLON statement
 	;
 
 compound_statement
-	: '{' '}'
-	| '{' statement_list '}'
-	| '{' declaration_list '}'
-	| '{' declaration_list statement_list '}'
+	: OPEN_BRACES CLOSED_BRACES
+	| OPEN_BRACES statement_list CLOSED_BRACES
+	| OPEN_BRACES declaration_list CLOSED_BRACES
+	| OPEN_BRACES declaration_list statement_list CLOSED_BRACES
 	;
 
 declaration_list
@@ -466,21 +468,21 @@ statement_list
 	;
 
 expression_statement
-	: ';'
-	| expression ';'
+	: SEMICOLON
+	| expression SEMICOLON
 	;
 
 selection_statement
-	: IF '(' expression ')' statement
-	| IF '(' expression ')' statement ELSE statement
-	| SWITCH '(' expression ')' statement
+	: IF OPEN_PARANTHESIS expression CLOSED_PARANTHESIS statement
+	| IF OPEN_PARANTHESIS expression CLOSED_PARANTHESIS statement ELSE statement
+	| SWITCH OPEN_PARANTHESIS expression CLOSED_PARANTHESIS statement
 	;
 
 iteration_statement
-	: WHILE '(' expression ')' statement
-	| DO statement WHILE '(' expression ')' ';'
-	| FOR '(' expression_statement expression_statement ')' statement
-	| FOR '(' expression_statement expression_statement expression ')' statement
+	: WHILE OPEN_PARANTHESIS expression CLOSED_PARANTHESIS statement
+	| DO statement WHILE OPEN_PARANTHESIS expression CLOSED_PARANTHESIS SEMICOLON
+	| FOR OPEN_PARANTHESIS expression_statement expression_statement CLOSED_PARANTHESIS statement
+	| FOR OPEN_PARANTHESIS expression_statement expression_statement expression CLOSED_PARANTHESIS statement
 	;
 
 jump_statement

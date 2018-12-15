@@ -1,1 +1,1 @@
-continue;
+int a = 5;

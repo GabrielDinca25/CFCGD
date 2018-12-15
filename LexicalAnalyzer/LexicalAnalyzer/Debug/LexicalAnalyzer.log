@@ -5,6 +5,6 @@ sample.y : warning : 43 rules useless in grammar [-Wother]
   main.cpp
   sample.flex.cpp
   sample.tab.cpp
-c:\users\gabi\source\repos\lexicalanalyzer\lexicalanalyzer\sample.tab.cpp(1592): warning C4065: switch statement contains 'default' but no 'case' labels
+c:\users\gogoa\desktop\cfcgd-master\lexicalanalyzer\lexicalanalyzer\sample.tab.cpp(1597): warning C4065: switch statement contains 'default' but no 'case' labels
   Generating Code...
-  LexicalAnalyzer.vcxproj -> C:\Users\Gabi\source\repos\LexicalAnalyzer\Debug\LexicalAnalyzer.exe
+  LexicalAnalyzer.vcxproj -> C:\Users\gogoa\Desktop\CFCGD-master\LexicalAnalyzer\Debug\LexicalAnalyzer.exe

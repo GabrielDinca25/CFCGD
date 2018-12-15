@@ -88,7 +88,9 @@ int line=0;
 "=="		 { return EQUAL;	}
 "!="		 { return NOT_EQUAL;	}
 ";"			 { printf("SEMICOLON "); return SEMICOLON;	}
+":"			 { return COLON;	}
 "."			 { return DOT;	}
+","			 { return COMMA;	}
 "&"			 { return BITWISE_AND;	}
 "!"			 { return NOT;	}
 "~"			 { return TILDA;	}
@@ -107,8 +109,9 @@ int line=0;
 ")"			 { return CLOSED_PARANTHESIS;	}
 "["			 { return OPEN_BRACKETS;	}
 "]"			 { return CLOSED_BRACKETS;	}
-("{"|"<%")	 { return OPEN_BRACES;	}
-("}"|"%>")	 { return CLOSED_BRACES;	}
+"{"			 { return OPEN_BRACES;	}
+"}"			 { return CLOSED_BRACES;	}
+
 
 \n  { printf("new line "); mylineno++; }
 ^"#".*					{;}
