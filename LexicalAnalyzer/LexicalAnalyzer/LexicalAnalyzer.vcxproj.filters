@@ -27,12 +27,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Bison Include="sample.y" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sample.tab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ast.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

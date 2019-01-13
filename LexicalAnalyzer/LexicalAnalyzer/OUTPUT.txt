@@ -1,1 +1,1 @@
-INT syntax error
+ID SEMICOLON 

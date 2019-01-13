@@ -5,16 +5,21 @@ int yylex();
 #include <stdlib.h>
 #include <ctype.h>
 #include "Lexer.h"
-#define YYDEBUG 1
-%}
+#include "Ast.h"
 
-//%start line
-//%token print
-//%token exit_command
-//%token <num> number
-//%token <ID> ID
-//%type <num> line exp term 
-//%type <ID> assignment
+#define YYDEBUG 1
+#define YYSTYPE std::string
+
+Node* root = NULL;
+int counter = 0;
+
+%}
+/*
+%union {
+	Node* node;
+	std::string val;
+};*/
+
 %token INT
 %token FLOAT
 %token ID
@@ -104,7 +109,7 @@ int yylex();
 %token UNKNOWN
 %token INVALID_SYNTAX
 
-%start type_specifier
+%start jump_statement
 %%
 
 expression
@@ -486,11 +491,25 @@ iteration_statement
 	;
 
 jump_statement
-	: GOTO ID SEMICOLON
-	| CONTINUE SEMICOLON
+	: GOTO ID SEMICOLON 
+	{ 
+		Node* parent = new Node("jump", "", counter);
+		counter++;
+
+		Node* nodeGOTO = new Node("GOTO", $1, counter);
+		parent->AddChild(nodeGOTO);
+		counter++;
+
+		Node* nodeID = new Node("ID", $2, counter);
+		parent->AddChild(nodeID);
+		counter++;
+
+		$$ = parent;
+	}
+/*	| CONTINUE SEMICOLON
 	| BREAK SEMICOLON
 	| RETURN SEMICOLON
-	| RETURN expression SEMICOLON
+	| RETURN expression SEMICOLON*/
 	;
 
 

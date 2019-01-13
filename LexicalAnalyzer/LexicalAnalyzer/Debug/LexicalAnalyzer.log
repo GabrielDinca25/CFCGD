@@ -1,10 +1,28 @@
 ﻿  Process "sample.y" bison file
-sample.y : warning : 15 nonterminals useless in grammar [-Wother]
-sample.y : warning : 43 rules useless in grammar [-Wother]
+sample.y : warning : 61 nonterminals useless in grammar [-Wother]
+sample.y : warning : 200 rules useless in grammar [-Wother]
   Process "sample.l" flex file
+  Ast.cpp
   main.cpp
   sample.flex.cpp
   sample.tab.cpp
-c:\users\gogoa\desktop\cfcgd-master\lexicalanalyzer\lexicalanalyzer\sample.tab.cpp(1597): warning C4065: switch statement contains 'default' but no 'case' labels
+f:\workspace\cfcgd\lexicalanalyzer\lexicalanalyzer\sample.y(507): error C2679: binary '=': no operator found which takes a right-hand operand of type 'Node *' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(2501): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
+          with
+          [
+              _Elem=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(2496): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
+          with
+          [
+              _Elem=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(2465): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(2425): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
+          with
+          [
+              _Elem=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xstring(2300): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept(<expr>)'
+  f:\workspace\cfcgd\lexicalanalyzer\lexicalanalyzer\sample.y(507): note: while trying to match the argument list '(std::string, Node *)'
   Generating Code...
-  LexicalAnalyzer.vcxproj -> C:\Users\gogoa\Desktop\CFCGD-master\LexicalAnalyzer\Debug\LexicalAnalyzer.exe

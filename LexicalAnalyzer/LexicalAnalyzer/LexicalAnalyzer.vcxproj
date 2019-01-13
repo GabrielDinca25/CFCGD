@@ -22,6 +22,7 @@
     <Flex Include="sample.l" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ast.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sample.flex.cpp" />
     <ClCompile Include="sample.tab.cpp" />
@@ -30,6 +31,7 @@
     <Bison Include="sample.y" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ast.h" />
     <ClInclude Include="sample.tab.h" />
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +72,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="..\..\..\..\..\..\Program Files\WinFlex\custom_build_rules\win_flex_bison\win_flex_bison_custom_build.props" />
+    <Import Project="..\..\..\..\Software\winflexbison-2.5.16\custom_build_rules\win_flex_bison\win_flex_bison_custom_build.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -137,6 +139,6 @@
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\..\..\..\..\Program Files\WinFlex\custom_build_rules\win_flex_bison\win_flex_bison_custom_build.targets" />
+    <Import Project="..\..\..\..\Software\winflexbison-2.5.16\custom_build_rules\win_flex_bison\win_flex_bison_custom_build.targets" />
   </ImportGroup>
 </Project>
